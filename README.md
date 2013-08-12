@@ -16,17 +16,18 @@ ARI is simply made up of two Proxy Adapters and a <b>Network Protocol</b>. The t
 
 What does the Proxy Data Adapter do? Basically, it exposes the Data Adapter interface through TCP sockets. In other words, it offers a Network Protocol, which any remote counterpart can implement to behave as a Lightstreamer Data Adapter. This means you can write a remote Data Adapter in C, in PHP, or in COBOL (?!?), provided that you have access to plain TCP sockets.
 
-But - here is some magic - if your remote Data Adapter is based on .NET, you can forget about direct socket programming, and leverage a ready-made library that exposes a higher level <b>.NET interface</b>. So, you will simply have to implement this .NET interface. Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The .NET library converts from TCP sockets to a .NET interface. Clear enough?
+But - here is some magic - if your remote Data Adapter is based on .NET, you can forget about direct socket programming, and leverage a ready-made library that exposes a higher level <b>.NET interface</b>. So, you will simply have to implement this .NET interface.<br>
+Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The .NET library converts from TCP sockets to a .NET interface. Clear enough?
 
 ## Creating the C# Data Adapter ##
 
 Let's start with C#. Feel free to skip this section if you are only interested in the Visual Basic example (we will replicate the same comments on the code).<br>
 
-We should implement two classes. One (which we will call <b>DataAdapterLauncher</b>) contains the application's <b>Main<b> and initializes the DataProviderServer (the provided piece of code that implements the Network Protocol). The other (which we will call <b>HelloWorldAdapter</b>) implements the actual Adapter interface.
+We should implement two classes. One (which we will call <b>DataAdapterLauncher</b>) contains the application's <b>Main</b> and initializes the DataProviderServer (the provided piece of code that implements the Network Protocol). The other (which we will call <b>HelloWorldAdapter</b>) implements the actual Adapter interface.
 
 - Create a new C# project (we used Microsoft's [Visual C# Express Edition](http://www.microsoft.com/express/)).
 - From the "New Project..." wizard, choose the "Console Application" template. Let's use "adapter_csharp" as the project name.
-- From the "Solution Explorer", delete the default Program.cs, then add a reference to the Lightstreamer .NET library: go to the "Browse" tab of the "Add Reference" dialog and point to the DotNetAdapter_N2.dll file, which you can find in the "Lightstreamer\DOCS-SDKs\sdk_adapter_dotnet\lib\dotnet_2.0" folder of your Lightstreamer installation. 
+- From the "Solution Explorer", delete the default Program.cs, then add a reference to the Lightstreamer .NET library: go to the "Browse" tab of the "Add Reference" dialog and point to the DotNetAdapter_N2.dll file, which you can find in the "Lightstreamer\DOCS-SDKs\sdk_adapter_dotnet\lib\" folder of your Lightstreamer installation. 
 
 ### DataAdapterLauncher ###
 
@@ -162,7 +163,7 @@ We will create a module (<b>DataAdapterLauncher</b>) which contains the applicat
 
 - Create a new VB project (we used Microsoft's [Visual Basic Express Edition](http://www.microsoft.com/express/)).
 - From the "New Project..." wizard, choose the "Console Application" template. Let's use "adapter_vb" as the project name.
-- From the "Solution Explorer", delete the default Module1.vb, then add a reference to the Lightstreamer .NET library: go to the "Browse" tab of the "Add Reference" dialog and point to the DotNetAdapter_N2.dll file, which you can find in the "Lightstreamer\DOCS-SDKs\sdk_adapter_dotnet\lib\dotnet_2.0" folder of your Lightstreamer installation.
+- From the "Solution Explorer", delete the default Module1.vb, then add a reference to the Lightstreamer .NET library: go to the "Browse" tab of the "Add Reference" dialog and point to the DotNetAdapter_N2.dll file, which you can find in the "Lightstreamer\DOCS-SDKs\sdk_adapter_dotnet\lib\" folder of your Lightstreamer installation.
 
 ### DataAdapterLauncher ###
 
@@ -200,6 +201,64 @@ Module Module1
     End Try
   End Sub
 End Module
+```
+
+This code creates a DataProviderServer instance and assigns a HelloWorldAdapter instance (which we will define below) to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, start the DataProviderServer.
+
+### HelloWorldAdapter ###
+
+Now add a class (call its file <b>HelloWorld.vb</b>). Replace the source code with this:
+
+```vb
+Imports System.Collections
+Imports System.Threading
+ 
+Imports Lightstreamer.Interfaces.Data
+ 
+Public Class HelloWorldAdapter
+  Implements IDataProvider
+  Private _listener As IItemEventListener
+  Private go As Boolean
+ 
+  Public Sub Init(ByVal parameters As IDictionary, ByVal configFile As String) Implements IDataProvider.Init
+  End Sub
+ 
+  Function IsSnapshotAvailable(ByVal itemName As String) As Boolean Implements IDataProvider.IsSnapshotAvailable
+    Return False
+  End Function
+ 
+  Public Sub SetListener(ByVal eventListener As IItemEventListener) Implements IDataProvider.SetListener
+    _listener = eventListener
+  End Sub
+ 
+  Public Sub Subscribe(ByVal itemName As String) Implements IDataProvider.Subscribe
+    If itemName.Equals("greetings") Then
+      Dim t As New Thread(AddressOf Run)
+      t.Start()
+    End If
+  End Sub
+ 
+  Public Sub Unsubscribe(ByVal itemName As String) Implements IDataProvider.Unsubscribe
+    If itemName.Equals("greetings") Then
+      go = False
+    End If
+  End Sub
+ 
+  Public Sub Run()
+    go = True
+    Dim c As Integer = 0
+    Dim rand As New Random()
+ 
+    While go
+      Dim eventData As IDictionary = New Hashtable()
+      eventData("message") = IIf(c Mod 2 = 0, "Hello", "World")
+      eventData("timestamp") = DateTime.Now.ToString("s")
+      _listener.Update("greetings", eventData, False)
+      c += 1
+      Thread.Sleep(1000 + rand.Next(2000))
+    End While
+  End Sub
+End Class
 ```
 
 The HelloWorldAdapter class implements the <b>IDataProvider</b> interface (which is the .NET remote equivalent of the Java DataProvider interface).
@@ -282,7 +341,7 @@ All the source code described in this article is available in this project.
 
 ## Related projects ##
 
-* [Lightstreamer "Hello World" Adapter for Java](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java
+* [Lightstreamer "Hello World" Adapter for Java](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
 
 # Lightstreamer Compatibility Notes #
 
