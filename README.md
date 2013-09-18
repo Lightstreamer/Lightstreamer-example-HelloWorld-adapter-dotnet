@@ -341,6 +341,7 @@ All the source code described in this article is available in this project.
 ## Related projects ##
 
 * [Lightstreamer "Hello World" Adapter for Java](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
+* [Lightstreamer "Hello World" Adapter for Sockets](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-socket)
 
 # Lightstreamer Compatibility Notes #
 
