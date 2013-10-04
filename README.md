@@ -9,7 +9,7 @@ First, please take a look at the [previous installment](https://github.com/Weswi
 ## Give me some .NET interfaces! ##
 
 Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the <b>Lightstreamer Adapter Remoting Infrastructure</b> (ARI). Let's have a look at it.<br>
-![General architecture](http://www.lightstreamer.com/docs/articles/DotNET-Data-Adapter_Tutorial_Colosseo/ls-ari.png)
+![General architecture](general_architecture.png)
 
 ARI is simply made up of two Proxy Adapters and a <b>Network Protocol</b>. The two Proxy Adapters implement the Java interfaces and are meant to be plugged into Lightstreamer Kernel, exactly as we did for our original "HELLOWORLD" Java Adapter. There are two Proxy Adapters because one implements the Data Adapter interface and the other implements the Metadata Adapter interface. Our "Hello World" example uses a default Metadata Adapter, so we only need the <b>Proxy Data Adapter</b>.
 
