@@ -1,10 +1,10 @@
-# Lightstreamer - "Hello World" - .NET Adapter #
+# Lightstreamer - "Hello World" Tutorial - .NET Adapter #
 
-This project will focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
+This project will focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" Tutorial - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
 
 ## Let's get started ##
 
-First, please take a look at the [previous installment](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application. Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with C# and Visual Basic equivalents. On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling provided by Lightstreamer Server, we could even do something different. For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or we could use the C# Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
+First, please take a look at the previous installment [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application. Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with C# and Visual Basic equivalents. On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling provided by Lightstreamer Server, we could even do something different. For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or we could use the C# Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
 
 ## Give me some .NET interfaces! ##
 
@@ -304,7 +304,7 @@ Create a new file in "Lightstreamer/adapters/ProxyHelloWorld", call it "adapters
 
 You have just deployed a new Java Adapter pair, where the Metadata Adapter is a default one (called "LiteralBasedProvider") and the Data Adapter is the Proxy Adapter (called "RobustNetworkedDataProvider"). This Adapter pair will be referenced by the clients as "<b>PROXY_HELLOWORLD</b>".
 
-As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in [Lightstreamer - "Hello World" - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "<b>index.htm</b>" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
+As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "<b>index.htm</b>" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
 
 ```js
   var client = new LightstreamerClient(null, "HELLOWORLD");
@@ -336,12 +336,12 @@ All the source code described in this article is available in this project.
 
 ## Clients using this Adapter ##
 
-* [Lightstreamer - "Hello World" - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
+* [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
 
 ## Related projects ##
 
-* [Lightstreamer - "Hello World" - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
-* [Lightstreamer - "Hello World" - TCP Socket Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-socket)
+* [Lightstreamer - "Hello World" Tutorial - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
+* [Lightstreamer - "Hello World" Tutorial - TCP Socket Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-socket)
 
 # Lightstreamer Compatibility Notes #
 
