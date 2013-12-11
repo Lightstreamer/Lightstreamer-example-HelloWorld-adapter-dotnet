@@ -1,6 +1,6 @@
-# Lightstreamer "Hello World" Adapter for .NET #
+# Lightstreamer - "Hello World" - .NET Adapter #
 
-This project will focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer "Hello World" Adapter for Java](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
+This project will focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
 
 ## Let's get started ##
 
@@ -304,7 +304,7 @@ Create a new file in "Lightstreamer/adapters/ProxyHelloWorld", call it "adapters
 
 You have just deployed a new Java Adapter pair, where the Metadata Adapter is a default one (called "LiteralBasedProvider") and the Data Adapter is the Proxy Adapter (called "RobustNetworkedDataProvider"). This Adapter pair will be referenced by the clients as "<b>PROXY_HELLOWORLD</b>".
 
-As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in ["Hello World" for Lightstreamer](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "<b>index.htm</b>" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
+As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in [Lightstreamer - "Hello World" - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "<b>index.htm</b>" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
 
 ```js
   var client = new LightstreamerClient(null, "HELLOWORLD");
@@ -336,12 +336,12 @@ All the source code described in this article is available in this project.
 
 ## Clients using this Adapter ##
 
-* ["Hello World" with Lightstreamer Colosseo](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
+* [Lightstreamer - "Hello World" - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
 
 ## Related projects ##
 
-* [Lightstreamer "Hello World" Adapter for Java](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
-* [Lightstreamer "Hello World" Adapter for Sockets](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-socket)
+* [Lightstreamer - "Hello World" - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
+* [Lightstreamer - "Hello World" - TCP Socket Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-socket)
 
 # Lightstreamer Compatibility Notes #
 
