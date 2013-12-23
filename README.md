@@ -340,6 +340,7 @@ All the source code described in this article is available in this project.
 ## Clients using this Adapter ##
 <!-- START RELATED_ENTRIES -->
 * [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
+
 <!-- END RELATED_ENTRIES -->
 
 ## Related projects ##
