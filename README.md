@@ -1,9 +1,9 @@
 # Lightstreamer - "Hello World" Tutorial - .NET Adapter #
 
-<!-- START DESCRIPTION "Hello World" Tutorial -->
+<!-- START DESCRIPTION lightstreamer-example-helloworld-adapter-dotnet -->
 
 This project will focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
-<!-- END DESCRIPTION "Hello World" Tutorial -->
+<!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-dotnet -->
 
 ## Let's get started ##
 
