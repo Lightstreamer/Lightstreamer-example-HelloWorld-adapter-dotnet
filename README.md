@@ -5,11 +5,11 @@
 This project will focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
 <!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-dotnet -->
 
-## Let's get started ##
+## Let's Get Started ##
 
 First, please take a look at the previous installment [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application. Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with C# and Visual Basic equivalents. On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling provided by Lightstreamer Server, we could even do something different. For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or we could use the C# Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
 
-## Give me some .NET interfaces! ##
+## Give Me Some .NET Interfaces! ##
 
 Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the <b>Lightstreamer Adapter Remoting Infrastructure</b> (ARI). Let's have a look at it.<br>
 ![General architecture](general_architecture.png)
@@ -151,7 +151,7 @@ Then, implement the <b>Subscribe</b> method. When the "greetings" item is subscr
 
 The <b>Run</b> method is executed within the thread started by Subscribe. Its code is very simple. We create a Hashtable containing a message (alternating "Hello" and "World") and the current timestamp. Then we inject the Hashtable into the server through the listener. We wait for a random time between 1 and 3 seconds, and we are ready to generate a new event.
 
-### Save and build ###
+### Save and Build ###
 
 From the File menu, choose "<b>Save All</b>". Type a location, for example: "c:\".
 
@@ -271,7 +271,7 @@ Then, implement the <b>Subscribe</b> subroutine. When the "greetings" item is su
 
 The <b>Run</b> subroutine is executed within the thread started by Subscribe. Its code is very simple. We create a Hashtable containing a message (alternating "Hello" and "World") and the current timestamp. Then we inject the Hashtable into the server through the listener. We wait for a random time between 1 and 3 seconds, and we are ready to generate a new event.
 
-### Save and build ###
+### Save and Build ###
 
 From the File menu, choose "<b>Save All</b>". Type a location, for example: "c:\".
 
@@ -319,7 +319,7 @@ with:
   var client = new LightstreamerClient(null, "PROXY_HELLOWORLD");
   ```
 
-## Running the application ##
+## Running the Application ##
 
 Now we have all the pieces ready. Let's enjoy the results.
 
@@ -327,7 +327,7 @@ Start your Lightstreamer Server. When it's up, run either the C# or the VB Remot
 
 Open a browser window and go to: http://localhost:8080/HelloWorld/
 
-## Final notes ##
+## Final Notes ##
 
 The full API references for the languages covered in this tutorial are available from the links below:
 
@@ -337,13 +337,13 @@ All the source code described in this article is available in this project.
 
 # See Also #
 
-## Clients using this Adapter ##
+## Clients Using This Adapter ##
 <!-- START RELATED_ENTRIES -->
 * [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
 
 <!-- END RELATED_ENTRIES -->
 
-## Related projects ##
+## Related Projects ##
 
 * [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
 * [Lightstreamer - "Hello World" Tutorial - TCP Socket Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-socket)
