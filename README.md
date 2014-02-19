@@ -351,4 +351,4 @@ All the source code described in this article is available in this project.
 
 # Lightstreamer Compatibility Notes #
 
-- Compatible with Lightstreamer Java Adapter .NET version 1.7 or newer.
+- Compatible with Lightstreamer .NET Adapter SDK version 1.7 or newer.
