@@ -298,6 +298,7 @@ Create a new file in "Lightstreamer/adapters/ProxyHelloWorld", call it "adapters
  
   <data_provider>
     <adapter_class>com.lightstreamer.adapters.remote.data.RobustNetworkedDataProvider</adapter_class>
+    <classloader>log-enabled</classloader>
     <param name="request_reply_port">6661</param>
     <param name="notify_port">6662</param>
   </data_provider>
