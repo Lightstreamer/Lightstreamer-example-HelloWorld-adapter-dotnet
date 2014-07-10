@@ -26,7 +26,7 @@ Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP 
 
 ### The C# Data Adapter
 
-(Skip this section if you are only interested in the Visual Basic example.)
+(Skip this section if you are only interested in [The Visual Basic Data Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#the-visual-basic-data-adapter).)
 
 The C# Data Adapter consists of two classes: the `DataAdapterLauncher` contains the application's <b>Main</b> and initializes the DataProviderServer (the provided piece of code that implements the Network Protocol); the `HelloWorldAdapter` implements the actual Adapter interface.
 
