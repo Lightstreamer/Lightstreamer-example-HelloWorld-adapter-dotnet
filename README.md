@@ -102,7 +102,7 @@ If you want to install a version of this demo in your local Lightstreamer Server
 * Plug the Proxy Data Adapter into the Server: go to the `Deployment_LS` folder and copy the `ProxyHelloWorld` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
 * Alternatively you may plug the **robust** versions of the Proxy Data Adapter: go to the `Deployment_LS(robust)` folder and copy the `ProxyHelloWorld` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
 * Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Adapters and the Remote Adapters.
-* Launch the Remote .NET Adapter Server. The `adapter_csharp.exe` file can be found under `Deployment_DotNet_Server`.
+* Launch the C# Remote .NET Adapter or the Visual Basic Remote .NET Adapter: the `adapter_csharp.exe` or the `adapter_vb.exe` files can be found under `Deployment_DotNet_Server` folder.
 * Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#clients-using-this-adapter).
     * In order to make the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript) front-end pages get data from the newly installed Adapter Set, you need to modify the front-end pages and set the required Adapter Set name to PROXY_HELLOWORLD when creating the LightstreamerClient instance. So edit the `index.htm` page of the Hello World front-end deployed under `Lightstreamer/pages/HelloWorld` and replace:<BR/>
 `var client = new LightstreamerClient(null," HELLOWORLD");`<BR/>
@@ -117,30 +117,25 @@ with:<BR/>
 To build your own version of `adapter_csharp.exe`, instead of using the one provided in the `deploy.zip` file from the [Install](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#install) section above, follow these steps.
 * Download this project.
 * Create a new C# project (we used Microsoft's [Visual C# Express Edition](http://www.microsoft.com/express/)): 
-from the "New Project..." wizard, choose the "Console Application" template and use "adapter_csharp" as the project name
+from the "New Project..." wizard, choose the "Console Application" template and use "adapter_csharp" as project name
 * From the "Solution Explorer", delete the default `Program.cs`, 
 * Get the Lightstreamer .NET Adapter Server library `DotNetAdapter_N2.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the latest [Lightstreamer 6.0 (Alpha)](http://www.lightstreamer.com/download) distribution, and copy it into the `lib` directory.
 * Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the latest [Lightstreamer 6.0 (Alpha)](http://www.lightstreamer.com/download) distribution, and copy them into the `lib` directory.
 * Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter_N2.dll` and the `log4net.dll` files in the `lib` folder. 
 * Add the `DataAdapterLauncher.cs` and the `HelloWorld.cs` files from the "Add -> Exixting Item" dialog. 
-* From the File menu, choose "Save All": type a location, for example: "c:\".
-* Build the Solution: from the Build menu, choose "Build Solution".
-Your C# Data Adapter is now compiled. If you used the path above, you will find your `adapter_csharp.exe` executable file under `adapter_csharp\bin\Release`. 
-But be patient and don't start it now, because you have to configure and start the Lightstreamer Server first. You can skip the section below, dedicated to VB, and go straight to the [Deploy the Proxy Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#deploying-the-proxy-adapter) section.
-
+* Build the `adapter_csharp.exe` file: from the Build menu, choose "Build Solution".
 
 ### Build The Visual Basic Data Adapter
-
-- Create a new VB project (we used Microsoft's [Visual Basic Express Edition](http://www.microsoft.com/express/)).
-- From the "New Project..." wizard, choose the "Console Application" template. Let's use "adapter_vb" as the project name.
-- From the "Solution Explorer", delete the default Module1.vb, then add a reference to the Lightstreamer .NET library: go to the "Browse" tab of the "Add Reference" dialog and point to the DotNetAdapter_N2.dll file, which you can find in the "Lightstreamer\DOCS-SDKs\sdk_adapter_dotnet\lib\" folder of your Lightstreamer installation.
-
-- Add the `DataAdapterLauncher.vb` and the `HelloWorld.vb` module to the project
-
-From the File menu, choose "<b>Save All</b>". Type a location, for example: "c:\".
-
-From the Build menu, choose "<b>Build adapter_vb</b>". Your VB Data Adapter is now compiled. If you used the path above, you will find your executable file under "C:\adapter_vb\adapter_vb\bin\Release". It is called "<b>adapter_vb.exe</b>". As for the C# Adapter, don't start it now, because you have to configure and start the Lightstreamer Server first.
-
+To build your own version of `adapter_vb.exe`, instead of using the one provided in the `deploy.zip` file from the [Install](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#install) section above, follow these steps.
+* Download this project.
+* Create a new VB project (we used Microsoft's [Visual Basic Express Edition](http://www.microsoft.com/express/)):
+From the "New Project..." wizard, choose the "Console Application" template and use "adapter_vb" as project name.
+* From the "Solution Explorer", delete the default Module1.vb.
+* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter_N2.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the latest [Lightstreamer 6.0 (Alpha)](http://www.lightstreamer.com/download) distribution, and copy it into the `lib` directory.
+* Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the latest [Lightstreamer 6.0 (Alpha)](http://www.lightstreamer.com/download) distribution, and copy them into the `lib` directory.
+* Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter_N2.dll` and the `log4net.dll` files in the `lib` folder. 
+* Add the `DataAdapterLauncher.vb` and the `HelloWorld.vb` module to the project from the "Add -> Exixting Item" dialog.
+* Build the `adapter_vb.exe` file: from the Build menu, choose "Build Solution".
 
 ## See Also 
 
