@@ -2,8 +2,10 @@
 
 <!-- START DESCRIPTION lightstreamer-example-helloworld-adapter-dotnet -->
 
-This project focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
+This project, of the "Hello World with Lightstreamer" series, will  focus on a .NET port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). In particular, both a <b>C#</b> version and a <b>Visual Basic</b> version of the Data Adapter will be shown.
 <!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-dotnet -->
+
+As example of a client using this adapter, you may refer to the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript).
 
 ## Details
 
@@ -64,23 +66,67 @@ Then, implement the <b>Subscribe</b> subroutine. When the "greetings" item is su
 The <b>Run</b> subroutine is executed within the thread started by Subscribe. Its code is very simple. We create a Hashtable containing a message (alternating "Hello" and "World") and the current timestamp. Then we inject the Hashtable into the server through the listener. We wait for a random time between 1 and 3 seconds, and we are ready to generate a new event.
 
 
+#### The Adapter Configuration
+
+For this demo we just use a Proxy Data Adapter, while instead, as Metadata Adapter, we use a default one: the [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)).
+This Adapter pair will be referenced by the clients as "**PROXY_HELLOWORLD**".
+The `adapters.xml` file looks like:
+
+```xml
+<?xml version="1.0"?>
+ 
+<adapters_conf id="PROXY_HELLOWORLD">
+ 
+  <metadata_provider>
+    <adapter_class>com.lightstreamer.adapters.metadata.LiteralBasedProvider</adapter_class>
+  </metadata_provider>
+ 
+  <data_provider>
+    <adapter_class>com.lightstreamer.adapters.remote.data.NetworkedDataProvider</adapter_class>
+    <classloader>log-enabled</classloader>
+    <param name="request_reply_port">6661</param>
+    <param name="notify_port">6662</param>
+  </data_provider>
+ 
+</adapters_conf>
+```
+
 ### Final Notes
 
 The full API references for the languages covered in this tutorial are available from [.NET API reference for Adapters](http://www.lightstreamer.com/docs/adapter_dotnet_api/index.html)
 
+## Install
+If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
+* Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](http://www.lightstreamer.com/download.htm), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
+* Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet/releases) and unzip it
+* Plug the Proxy Data Adapter into the Server: go to the `Deployment_LS` folder and copy the `ProxyHelloWorld` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
+* Alternatively you may plug the **robust** versions of the Proxy Data Adapter: go to the `Deployment_LS(robust)` folder and copy the `ProxyHelloWorld` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
+* Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Adapters and the Remote Adapters.
+* Launch the Remote .NET Adapter Server. The `adapter_csharp.exe` file can be found under `Deployment_DotNet_Server`.
+* Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#clients-using-this-adapter).
+    * In order to make the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript) front-end pages get data from the newly installed Adapter Set, you need to modify the front-end pages and set the required Adapter Set name to PROXY_HELLOWORLD when creating the LightstreamerClient instance. So edit the `index.htm` page of the Hello World front-end deployed under `Lightstreamer/pages/HelloWorld` and replace:<BR/>
+`var client = new LightstreamerClient(null," HELLOWORLD");`<BR/>
+with:<BR/>
+`var client = new LightstreamerClient(null,"PROXY_HELLOWORLD");;`<BR/>
+    * Open a browser window and go to: [http://localhost:8080/HelloWorld/]()
 
 ## Build
 
 ### Build The C# Data Adapter
 
-- Create a new C# project (we used Microsoft's [Visual C# Express Edition](http://www.microsoft.com/express/)).
-- From the "New Project..." wizard, choose the "Console Application" template. Let's use "adapter_csharp" as the project name.
-- From the "Solution Explorer", delete the default Program.cs, then add a reference to the Lightstreamer .NET library: go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter_N2.dll` file, which you can find in the `Lightstreamer\DOCS-SDKs\sdk_adapter_dotnet\lib\` folder of your Lightstreamer installation. 
-- Add the DataAdapterLauncher class and the HelloWorldAdapter class
-
-From the File menu, choose "<b>Save All</b>". Type a location, for example: "c:\".
-
-From the Build menu, choose "<b>Build Solution</b>". Your C# Data Adapter is now compiled. If you used the path above, you will find your executable file under "C:\adapter_csharp\adapter_csharp\bin\Release". It is called "<b>adapter_csharp.exe</b>". But be patient and don't start it now, because you have to configure and start the Lightstreamer Server first. You can skip the section below, dedicated to VB, and go straight to the "Deploy the Proxy Adapter" section.
+To build your own version of `adapter_csharp.exe`, instead of using the one provided in the `deploy.zip` file from the [Install](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#install) section above, follow these steps.
+* Download this project.
+* Create a new C# project (we used Microsoft's [Visual C# Express Edition](http://www.microsoft.com/express/)): 
+from the "New Project..." wizard, choose the "Console Application" template and use "adapter_csharp" as the project name
+* From the "Solution Explorer", delete the default `Program.cs`, 
+* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter_N2.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the latest [Lightstreamer 6.0 (Alpha)](http://www.lightstreamer.com/download) distribution, and copy it into the `lib` directory.
+* Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the latest [Lightstreamer 6.0 (Alpha)](http://www.lightstreamer.com/download) distribution, and copy them into the `lib` directory.
+* Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter_N2.dll` and the `log4net.dll` files in the `lib` folder. 
+* Add the `DataAdapterLauncher.cs` and the `HelloWorld.cs` files from the "Add -> Exixting Item" dialog. 
+* From the File menu, choose "Save All": type a location, for example: "c:\".
+* Build the Solution: from the Build menu, choose "Build Solution".
+Your C# Data Adapter is now compiled. If you used the path above, you will find your `adapter_csharp.exe` executable file under `adapter_csharp\bin\Release`. 
+But be patient and don't start it now, because you have to configure and start the Lightstreamer Server first. You can skip the section below, dedicated to VB, and go straight to the [Deploy the Proxy Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#deploying-the-proxy-adapter) section.
 
 
 ### Build The Visual Basic Data Adapter
@@ -94,59 +140,6 @@ From the Build menu, choose "<b>Build Solution</b>". Your C# Data Adapter is now
 From the File menu, choose "<b>Save All</b>". Type a location, for example: "c:\".
 
 From the Build menu, choose "<b>Build adapter_vb</b>". Your VB Data Adapter is now compiled. If you used the path above, you will find your executable file under "C:\adapter_vb\adapter_vb\bin\Release". It is called "<b>adapter_vb.exe</b>". As for the C# Adapter, don't start it now, because you have to configure and start the Lightstreamer Server first.
-
-
-### Deploying the Proxy Adapter
-
-Now that our remote Data Adapter is ready, we need to deploy and configure the provided Proxy Adapter within Lightstreamer Server.
-
-Go to the "adapters" folder of your Lightstreamer Server and create a "<b>ProxyHelloWorld</b>" folder inside "adapters", and a "<b>lib</b>" folder inside "ProxyHelloWorld".
-
-Copy the "ls-proxy-adapters.jar" file from "Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/lib" to "Lightstreamer/adapters/ProxyHelloWorld/lib".
-
-Create a new file in "Lightstreamer/adapters/ProxyHelloWorld", call it "adapters.xml", and use the following contents:
-
-```xml
-<?xml version="1.0"?>
- 
-<adapters_conf id="PROXY_HELLOWORLD">
- 
-  <metadata_provider>
-    <adapter_class>com.lightstreamer.adapters.metadata.LiteralBasedProvider</adapter_class>
-  </metadata_provider>
- 
-  <data_provider>
-    <adapter_class>com.lightstreamer.adapters.remote.data.RobustNetworkedDataProvider</adapter_class>
-    <classloader>log-enabled</classloader>
-    <param name="request_reply_port">6661</param>
-    <param name="notify_port">6662</param>
-  </data_provider>
- 
-</adapters_conf>
-```
-
-You have just deployed a new Java Adapter pair, where the Metadata Adapter is a default one (called [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)) and the Data Adapter is the Proxy Adapter (called "RobustNetworkedDataProvider"). This Adapter pair will be referenced by the clients as "<b>PROXY_HELLOWORLD</b>".
-
-As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "<b>index.htm</b>" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
-
-```js
-  var client = new LightstreamerClient(null, "HELLOWORLD");
-```
-
-with:
-
-```js
-  var client = new LightstreamerClient(null, "PROXY_HELLOWORLD");
-  ```
-
-### Running the Application
-
-Now we have all the pieces ready. Let's enjoy the results.
-
-Start your Lightstreamer Server. 
-When it's up, run either the C# or the VB Remote Adapter.
-
-Open a browser window and go to: http://localhost:8080/HelloWorld/
 
 
 ## See Also 
