@@ -24,17 +24,21 @@ What does the Proxy Data Adapter do? Basically, it exposes the Data Adapter inte
 But - here is some magic - if your remote Data Adapter is based on .NET, you can forget about direct socket programming, and leverage a ready-made library that exposes a higher level <b>.NET interface</b>. So, you will simply have to implement this .NET interface.<br>
 Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The .NET library converts from TCP sockets to a .NET interface.
 
-### The C# Data Adapter
+The full API references for the languages covered in this tutorial are available from [.NET API reference for Adapters](http://www.lightstreamer.com/docs/adapter_dotnet_api/index.html)
+
+### Dig the Code
+
+#### The C# Data Adapter
 
 (Skip this section if you are only interested in [The Visual Basic Data Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet#the-visual-basic-data-adapter).)
 
 The C# Data Adapter consists of two classes: the `DataAdapterLauncher` contains the application's <b>Main</b> and initializes the DataProviderServer (the provided piece of code that implements the Network Protocol); the `HelloWorldAdapter` implements the actual Adapter interface.
 
-#### DataAdapterLauncher
+##### DataAdapterLauncher
 
 The DataAdapterLauncher creates a DataProviderServer instance and assigns a HelloWorldAdapter instance to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, you start the DataProviderServer.
 
-#### HelloWorldAdapter
+##### HelloWorldAdapter
 
 The HelloWorldAdapter class implements the <b>IDataProvider</b> interface (which is the .NET remote equivalent of the Java DataProvider interface).
 
@@ -44,18 +48,17 @@ Then, implement the <b>Subscribe</b> method. When the "greetings" item is subscr
 
 The <b>Run</b> method is executed within the thread started by Subscribe. Its code is very simple. We create a Hashtable containing a message (alternating "Hello" and "World") and the current timestamp. Then we inject the Hashtable into the server through the listener. We wait for a random time between 1 and 3 seconds, and we are ready to generate a new event.
 
-
-### The Visual Basic Data Adapter
+#### The Visual Basic Data Adapter
 
 Now let's work with Visual Basic instead of C#.
 
 It consists of two modules: the `DataAdapterLauncher`, which contains the application's <b>Main</b> and initializes the DataProviderServer (the provided piece of code that implements the Network Protocol); The `HelloWorldAdapter` that implements the actual Adapter interface.
 
-#### DataAdapterLauncher
+##### DataAdapterLauncher
 
 The `DataAdapterLauncher.vb` creates a DataProviderServer instance and assigns a HelloWorldAdapter instance (which we will define below) to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, start the DataProviderServer.
 
-#### HelloWorldAdapter
+##### HelloWorldAdapter
 
 The HelloWorldAdapter class implements the <b>IDataProvider</b> interface (which is the .NET remote equivalent of the Java DataProvider interface).
 
@@ -65,8 +68,7 @@ Then, implement the <b>Subscribe</b> subroutine. When the "greetings" item is su
 
 The <b>Run</b> subroutine is executed within the thread started by Subscribe. Its code is very simple. We create a Hashtable containing a message (alternating "Hello" and "World") and the current timestamp. Then we inject the Hashtable into the server through the listener. We wait for a random time between 1 and 3 seconds, and we are ready to generate a new event.
 
-
-#### The Adapter Configuration
+#### The Adapter Set Configuration
 
 For this demo we just use a Proxy Data Adapter, while instead, as Metadata Adapter, we use a default one: the [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)).
 This Adapter pair will be referenced by the clients as "**PROXY_HELLOWORLD**".
@@ -90,10 +92,6 @@ The `adapters.xml` file looks like:
  
 </adapters_conf>
 ```
-
-### Final Notes
-
-The full API references for the languages covered in this tutorial are available from [.NET API reference for Adapters](http://www.lightstreamer.com/docs/adapter_dotnet_api/index.html)
 
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
@@ -154,3 +152,6 @@ From the "New Project..." wizard, choose the "Console Application" template and 
 ## Lightstreamer Compatibility Notes
 
 - Compatible with Lightstreamer .NET Adapter SDK version 1.7 or newer.
+
+## Final Notes
+For more information, please [visit our website](http://www.lightstreamer.com/) and [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
