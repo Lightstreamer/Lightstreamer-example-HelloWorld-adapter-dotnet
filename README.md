@@ -13,16 +13,16 @@ First, please take a look at the previous installment [Lightstreamer - "Hello Wo
 
 ### .NET Interfaces
 
-Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the **Lightstreamer Adapter Remoting Infrastructure** (ARI). 
+Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the [Lightstreamer Adapter Remoting Infrastructure (**ARI**)](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf) and form the [Adapter Remoting Infrastructure for .NET](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_dotnet/doc/DotNet%20Adapters.pdf). 
+
+*The Architecture of [Adapter Remoting Infrastructure for .NET](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_dotnet/doc/DotNet%20Adapters.pdf).*
 
 ![General architecture](general_architecture.png)
 
-ARI is simply made up of two Proxy Adapters and a **Network Protocol**. The two Proxy Adapters implement the Java interfaces and are meant to be plugged into Lightstreamer Kernel, exactly as we did for our original "HELLOWORLD" Java Adapter. There are two Proxy Adapters because one implements the Data Adapter interface and the other implements the Metadata Adapter interface. Our "Hello World" example uses a default Metadata Adapter, so we only need the <b>Proxy Data Adapter</b>.
+ARI is simply made up of two Proxy Adapters and a *Network Protocol*. The two Proxy Adapters, one implementing the Data Adapter interface and the other implementing the Metadata Adapter interface, are meant to be plugged into Lightstreamer Kernel.
 
-What does the Proxy Data Adapter do? Basically, it exposes the Data Adapter interface through TCP sockets. In other words, it offers a Network Protocol, which any remote counterpart can implement to behave as a Lightstreamer Data Adapter. This means you can write a remote Data Adapter in C, in PHP, or in COBOL (?!?), provided that you have access to plain TCP sockets.
-
-But - here is some magic - if your remote Data Adapter is based on .NET, you can forget about direct socket programming, and leverage a ready-made library that exposes a higher level <b>.NET interface</b>. So, you will simply have to implement this .NET interface.<br>
-Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The .NET library converts from TCP sockets to a .NET interface.
+Basically, the Proxy Data Adapter exposes the Data Adapter interface through TCP sockets. In other words, it offers a Network Protocol, which any remote counterpart can implement to behave as a Lightstreamer Data Adapter. This means you can write a remote Data Adapter in any language, provided that you have access to plain TCP sockets.
+But if your remote Data Adapter is based on .NET, you can leverage a ready-made library that exposes a higher level *.NET interface*. So, you will simply have to implement this .NET interface. So the Proxy Data Adapter converts from a Java interface to TCP sockets, and the .NET library converts from TCP sockets to a .NET interface.
 
 The full API references for the languages covered in this tutorial are available from [.NET API reference for Adapters](http://www.lightstreamer.com/docs/adapter_dotnet_api/index.html)
 
