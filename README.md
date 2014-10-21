@@ -159,7 +159,7 @@ Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreame
 
 ## Lightstreamer Compatibility Notes
 
-- Compatible with Lightstreamer .NET Adapter SDK version 1.7 or newer.
+- Compatible with Lightstreamer .NET Adapter SDK version 1.7 to 1.8.
 
 ## Final Notes
 For more information, please [visit our website](http://www.lightstreamer.com/) and [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
