@@ -11,13 +11,13 @@ As an example of [Clients Using This Adapter](https://github.com/Weswit/Lightstr
 
 First, please take a look at the previous installment [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application. Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with C# and Visual Basic equivalents. On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling provided by Lightstreamer Server, we could even do something different. For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or, we could use the C# Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
 
-Please refer to [General Concepts](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
+Please refer to [General Concepts](http://www.lightstreamer.com/docs/base/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 
 ### .NET Interfaces
 
-Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the [Lightstreamer Adapter Remoting Infrastructure (**ARI**)](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf) and form the [Adapter Remoting Infrastructure for .NET](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_dotnet/doc/DotNet%20Adapters.pdf). 
+Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the [Lightstreamer Adapter Remoting Infrastructure (**ARI**)](http://www.lightstreamer.com/docs/ARI_base/ARI%20Protocol.pdf). 
 
-*The Architecture of [Adapter Remoting Infrastructure for .NET](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_dotnet/doc/DotNet%20Adapters.pdf).*
+*The Architecture of Adapter Remoting Infrastructure for .NET.*
 
 ![General architecture](general_architecture.png)
 
@@ -72,7 +72,7 @@ The <b>Run</b> subroutine is executed within the thread started by Subscribe. It
 
 #### The Adapter Set Configuration
 
-For this demo, we just use a Proxy Data Adapter, while instead, as Metadata Adapter, we use a default one: the [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)).
+For this demo, we just use a Proxy Data Adapter, while instead, as Metadata Adapter, we use the [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java), a simple full implementation of a Metadata Adapter, already provided by Lightstreamer server.
 This Adapter pair will be referenced by the clients as "**PROXY_HELLOWORLD**".
 The `adapters.xml` file looks like:
 
@@ -86,7 +86,7 @@ The `adapters.xml` file looks like:
   </metadata_provider>
  
   <data_provider>
-    <adapter_class>com.lightstreamer.adapters.remote.data.NetworkedDataProvider</adapter_class>
+    <adapter_class>PROXY_FOR_REMOTE_ADAPTER</adapter_class>
     <classloader>log-enabled</classloader>
     <param name="request_reply_port">6661</param>
     <param name="notify_port">6662</param>
@@ -94,6 +94,9 @@ The `adapters.xml` file looks like:
  
 </adapters_conf>
 ```
+
+<i>NOTE: not all configuration options of a Proxy Adapter are exposed by the file suggested above. 
+You can easily expand your configurations using the generic template, `DOCS-SDKs/.../doc/adapter_conf_template/adapters.xml` or `DOCS-SDKs/.../doc/adapter_robust_conf_template/adapters.xml`, as a reference.</i>
 
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps:
@@ -139,9 +142,7 @@ From the "New Project..." wizard, choose the "Console Application" template, and
 
 ## See Also 
 
-* [Adapter Remoting Infrastructure
-Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf)
-* [.NET Adapter Development](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_dotnet/doc/DotNet%20Adapters.pdf)
+* [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/docs/ARI_base/ARI%20Protocol.pdf)
 * [.NET Adapter API Reference](http://www.lightstreamer.com/docs/adapter_dotnet_api/frames.html)
  
 ### Clients Using This Adapter
@@ -159,7 +160,8 @@ Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreame
 
 ## Lightstreamer Compatibility Notes
 
-- Compatible with Lightstreamer .NET Adapter SDK version 1.7 to 1.8.
+* Compatible with Lightstreamer SDK for .NET Adapters version 1.9 or newer.
+- For a version of this example compatible with Lightstreamer SDK for .NET Adapters 1.7, please refer to [this tag](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/for_Lightstreamer_5.1).
 
 ## Final Notes
 For more information, please [visit our website](http://www.lightstreamer.com/) and [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
