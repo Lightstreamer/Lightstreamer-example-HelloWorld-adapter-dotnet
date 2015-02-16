@@ -152,12 +152,9 @@ From the "New Project..." wizard, choose the "Console Application" template, and
 
 <!-- END RELATED_ENTRIES -->
 
-### The Same Demo Adapter With Other Technologies
-
-* [Complete list of "Hello World" Adapter implementations](https://github.com/Weswit?query=Lightstreamer-example-HelloWorld-adapter)
-
 ### Related Projects
 
+* [Complete list of "Hello World" Adapter implementations with other technologies](https://github.com/Weswit?query=Lightstreamer-example-HelloWorld-adapter)
 * [Lightstreamer - Reusable Metadata Adapters - Java Adapter](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)
 
 ## Lightstreamer Compatibility Notes
