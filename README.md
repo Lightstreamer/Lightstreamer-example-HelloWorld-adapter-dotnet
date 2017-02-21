@@ -160,7 +160,7 @@ From the "New Project..." wizard, choose the "Console Application" template, and
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer SDK for .NET Adapters version 1.9 or newer.
+* Compatible with Lightstreamer SDK for .NET Adapters version 1.9.
 - For a version of this example compatible with Lightstreamer SDK for .NET Adapters 1.7, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/for_Lightstreamer_5.1).
 
 ## Final Notes
