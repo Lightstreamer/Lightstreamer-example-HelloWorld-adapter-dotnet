@@ -124,9 +124,9 @@ To build your own version of `adapter_csharp.exe`, instead of using the one prov
 * Create a new C# project (we used Microsoft's [Visual C# Express Edition](http://www.microsoft.com/express/)): 
 from the "New Project..." wizard, choose the "Console Application" template, and use "adapter_csharp" as project name.
 * From the "Solution Explorer", delete the default `Program.cs`. 
-* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter_N2.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
+* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
 * Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy them into the `lib` directory.
-* Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter_N2.dll` and the `log4net.dll` files in the `lib` folder. 
+* Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter.dll` and the `log4net.dll` files in the `lib` folder. 
 * Add the `DataAdapterLauncher.cs` and the `HelloWorld.cs` files from the "Add -> Existing Item" dialog. 
 * Build the `adapter_csharp.exe` file: from the Build menu, choose "Build Solution".
 
@@ -136,9 +136,9 @@ To build your own version of `adapter_vb.exe`, instead of using the one provided
 * Create a new VB project (we used Microsoft's [Visual Basic Express Edition](http://www.microsoft.com/express/)):
 From the "New Project..." wizard, choose the "Console Application" template, and use "adapter_vb" as project name.
 * From the "Solution Explorer", delete the default Module1.vb.
-* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter_N2.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
+* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
 * Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy them into the `lib` directory.
-* Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter_N2.dll` and the `log4net.dll` files in the `lib` folder. 
+* Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter.dll` and the `log4net.dll` files in the `lib` folder. 
 * Add the `DataAdapterLauncher.vb` and the `HelloWorld.vb` module to the project from the "Add -> Exixting Item" dialog.
 * Build the `adapter_vb.exe` file: from the Build menu, choose "Build Solution".
 
@@ -160,7 +160,8 @@ From the "New Project..." wizard, choose the "Console Application" template, and
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer SDK for .NET Adapters version 1.9.
+* Compatible with Lightstreamer SDK for .NET Adapters version 1.10.
+* For instructions compatible with Lightstreamer SDK for .NET Adapters version 1.9, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-StockList-adapter-dotnet/releases/tag/for_version_1.9).
 - For a version of this example compatible with Lightstreamer SDK for .NET Adapters 1.7, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/for_Lightstreamer_5.1).
 
 ## Final Notes
