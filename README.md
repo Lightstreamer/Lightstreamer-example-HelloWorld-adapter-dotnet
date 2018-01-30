@@ -124,8 +124,8 @@ To build your own version of `adapter_csharp.exe`, instead of using the one prov
 * Create a new C# project (we used Microsoft's [Visual Studio Community Edition](http://www.microsoft.com/express/)): 
 from the "New Project..." wizard, choose the "Visual C#" language and the "Console Application" template, then use "adapter_csharp" as project name.
 * From the "Solution Explorer", delete the default `Program.cs`. 
-* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
-* Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
+* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://www.lightstreamer.com/download/), and copy it into the `lib` directory.
+* Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the [latest Lightstreamer distribution](http://www.lightstreamer.com/download/), and copy it into the `lib` directory.
 * Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter.dll` and the `log4net.dll` files in the `lib` folder. 
 * Add the `DataAdapterLauncher.cs` and the `HelloWorld.cs` files from the "Add -> Existing Item" dialog. 
 * Build the `adapter_csharp.exe` file: from the Build menu, choose "Build Solution".
@@ -136,8 +136,8 @@ To build your own version of `adapter_vb.exe`, instead of using the one provided
 * Create a new VB project (we used Microsoft's [Visual Studio Community Edition](http://www.microsoft.com/express/)):
 from the "New Project..." wizard, choose the "Visual Basic" language and the "Console Application" template, then use "adapter_vb" as project name.
 * From the "Solution Explorer", delete the default Module1.vb.
-* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
-* Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the [latest Lightstreamer distribution](http://download.lightstreamer.com/#current), and copy it into the `lib` directory.
+* Get the Lightstreamer .NET Adapter Server library `DotNetAdapter.dll` from the `DOCS-SDKs/sdk_adapter_dotnet/lib` folder of the [latest Lightstreamer distribution](http://www.lightstreamer.com/download/), and copy it into the `lib` directory.
+* Get the Log4net library `log4net.dll` file from the `DOCS-SDKs/sdk_adapter_dotnet/bin` folder of the [latest Lightstreamer distribution](http://www.lightstreamer.com/download/), and copy it into the `lib` directory.
 * Add a reference to the Lightstreamer .NET library and the Log4net library : go to the "Browse" tab of the "Add Reference" dialog and point to the `DotNetAdapter.dll` and the `log4net.dll` files in the `lib` folder. 
 * Add the `DataAdapterLauncher.vb` and the `HelloWorld.vb` module to the project from the "Add -> Exixting Item" dialog.
 * Build the `adapter_vb.exe` file: from the Build menu, choose "Build Solution".
