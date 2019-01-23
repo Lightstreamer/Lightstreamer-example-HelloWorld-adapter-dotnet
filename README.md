@@ -134,7 +134,7 @@ from the "New Project..." wizard, choose the "Visual C#" language and the ".NET 
 ### Build The Visual Basic Data Adapter
 To build your own version of `adapter_vb.exe`, instead of using the one provided in the `deploy.zip` file from the [Install](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet#install) section above, follow these steps:
 * Download this project.
-* Create a new VB project (we used Microsoft's [Visual Studio Community Edition](http://www.microsoft.com/express/)):
+* Create a new VB project (we used Microsoft's [Visual Studio Community Edition](https://visualstudio.microsoft.com/downloads/)):
 from the "New Project..." wizard, choose the "Visual Basic" language and the "Console Application" template, then use "adapter_vb" as project name.
 * From the "Solution Explorer", delete the default Module1.vb.
 * Get the binaries files of the Lightstreamer .NET Standard Adapter Server library from NuGet [Lightstreamer.DotNetStandard.Adapters](https://www.nuget.org/packages/Lightstreamer.DotNetStandard.Adapters/), copy it into the `lib` directory and add it as a reference for the project; or more simply, use directly the "NuGet Package Manager" looking for 'Lightstreamer Adapters' and intalling the Lightstreamer.DotNetStandard.Adapters package.
