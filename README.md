@@ -159,7 +159,7 @@ from the "New Project..." wizard, choose the "Visual Basic" language and the "Co
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer SDK for .NET Standard Adapters version 1.11.
+* Compatible with Lightstreamer SDK for .NET Standard Adapters since version 1.11.
 * For instructions compatible with Lightstreamer SDK for .NET Adapters version 1.10, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/current_1.10).
 
 ## Final Notes
