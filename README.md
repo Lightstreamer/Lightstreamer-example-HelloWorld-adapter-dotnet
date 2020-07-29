@@ -18,7 +18,7 @@ Please refer to [General Concepts](https://www.lightstreamer.com/docs/base/Gener
 
 ### .NET Interfaces
 
-Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the [Lightstreamer Adapter Remoting Infrastructure (**ARI**)](https://www.lightstreamer.com/docs/adapter_generic_base/ARI%20Protocol.pdf). 
+Lightstreamer Server exposes native Java Adapter interfaces. The .NET interfaces are added through the [Lightstreamer Adapter Remoting Infrastructure (**ARI**)](https://lightstreamer.com/api/ls-generic-adapter/latest/ARI%20Protocol.pdf). 
 
 *The Architecture of Adapter Remoting Infrastructure for .NET.*
 
@@ -143,8 +143,8 @@ from the "New Project..." wizard, choose the "Visual Basic" language and the "Co
 
 ## See Also 
 
-* [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/docs/adapter_generic_base/ARI%20Protocol.pdf)
-* [.NET Adapter API Reference](http://www.lightstreamer.com/docs/adapter_dotnet_api/frames.html)
+* [Adapter Remoting Infrastructure Network Protocol Specification](https://lightstreamer.com/api/ls-generic-adapter/latest/ARI%20Protocol.pdf)
+* [.NET Adapter API Reference](https://lightstreamer.com/api/ls-dotnetstandard-adapter/latest/index.html)
  
 ### Clients Using This Adapter
 <!-- START RELATED_ENTRIES -->
