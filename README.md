@@ -14,7 +14,7 @@ Notice that the front-end will be exactly the same. We created a very simple HTM
 On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling provided by Lightstreamer Server, we could even do something different.
 For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or, we could use the C# Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
 
-Please refer to [General Concepts](https://www.lightstreamer.com/docs/base/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
+Please refer to [General Concepts](https://lightstreamer.com/docs/ls-server/latest/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 
 ### .NET Interfaces
 
