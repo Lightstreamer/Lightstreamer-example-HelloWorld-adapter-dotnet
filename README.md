@@ -31,7 +31,7 @@ But, if your remote Data Adapter is based on certain languages/technologies (suc
 <br>
 In this specific example we will leverage the <b>Lightstreamer .NET Standard Adapter API</b> library. So, let's recap... the Proxy Data Adapter converts from a Java interface to TCP sockets, and the .NET Standard library converts from TCP sockets to a .NET interface.
 <br>
-The full API references for the languages covered in this tutorial are available from [.NET Standard API reference for Adapters](https://lightstreamer.com/api/ls-dotnetstandard-adapter/latest/frames.html?frmname=topic&frmfile=index.html)
+The full API references for the languages covered in this tutorial are available from [.NET Standard API reference for Adapters](https://sdk.lightstreamer.com/ls-dotnetstandard-adapter/1.12.1-n/api/index.html).
 
 ### Dig the Code
 
@@ -77,7 +77,7 @@ The <b>Run</b> subroutine is executed within the thread started by Subscribe. It
 
 #### The Adapter Set Configuration
 
-For this demo, we just use a Proxy Data Adapter, while instead, as Metadata Adapter, we use the [LiteralBasedProvider](https://github.com/Lightstreamer/Lightstreamer-example-ReusableMetadata-adapter-java), a simple full implementation of a Metadata Adapter, already provided by Lightstreamer server.
+For this demo, we just use a Proxy Data Adapter, while instead, as Metadata Adapter, we use the [LiteralBasedProvider](https://github.com/Lightstreamer/Lightstreamer-lib-adapter-java-inprocess#literalbasedprovider-metadata-adapter), a simple full implementation of a Metadata Adapter, already provided by Lightstreamer server.
 This Adapter pair will be referenced by the clients as "**PROXY_HELLOWORLD**".
 The `adapters.xml` file looks like:
 
@@ -156,7 +156,7 @@ from the "New Project..." wizard, choose the "Visual Basic" language and the "Co
 ### Related Projects
 
 * [Complete list of "Hello World" Adapter implementations with other technologies](https://github.com/Lightstreamer?utf8=%E2%9C%93&q=Lightstreamer-example-HelloWorld-adapter&type=&language=)
-* [Lightstreamer - Reusable Metadata Adapters - Java Adapter](https://github.com/Lightstreamer/Lightstreamer-example-ReusableMetadata-adapter-java)
+* [LiteralBasedProvider Metadata Adapter](https://github.com/Lightstreamer/Lightstreamer-lib-adapter-java-inprocess#literalbasedprovider-metadata-adapter)
 
 ## Lightstreamer Compatibility Notes
 
