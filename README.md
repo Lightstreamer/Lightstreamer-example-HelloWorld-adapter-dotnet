@@ -31,7 +31,7 @@ But, if your remote Data Adapter is based on certain languages/technologies (suc
 <br>
 In this specific example we will leverage the <b>Lightstreamer .NET Standard Adapter API</b> library. So, let's recap... the Proxy Data Adapter converts from a Java interface to TCP sockets, and the .NET Standard library converts from TCP sockets to a .NET interface.
 <br>
-The full API references for the languages covered in this tutorial are available from [.NET Standard API reference for Adapters](https://sdk.lightstreamer.com/ls-dotnetstandard-adapter/1.12.1-n/api/index.html).
+The full API references for the languages covered in this tutorial are available from [.NET Standard API reference for Adapters](https://lightstreamer.com/api/ls-dotnetstandard-adapter/1.12.1-n/).
 
 ### Dig the Code
 
