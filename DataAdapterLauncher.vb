@@ -21,19 +21,15 @@ Imports Lightstreamer.DotNet.Server
 Module Module1
     Sub Main()
         Dim host As String = "localhost"
-        Dim reqrepPort As Integer = 6661
-        Dim notifPort As Integer = 6662
+        Dim port As Integer = 6661
 
         Try
             Dim server As New DataProviderServer()
             server.Adapter = New HelloWorldAdapter()
 
-            Dim reqrepSocket As New TcpClient(host, reqrepPort)
-            server.RequestStream = reqrepSocket.GetStream()
-            server.ReplyStream = reqrepSocket.GetStream()
-
-            Dim notifSocket As New TcpClient(host, notifPort)
-            server.NotifyStream = notifSocket.GetStream()
+            Dim socket As New TcpClient(host, port)
+            server.RequestStream = socket.GetStream()
+            server.ReplyStream = socket.GetStream()
 
             server.Start()
             System.Console.WriteLine("Remote Adapter connected to Lightstreamer Server.")

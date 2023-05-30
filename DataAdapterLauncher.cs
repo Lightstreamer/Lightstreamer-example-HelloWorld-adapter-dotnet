@@ -26,20 +26,16 @@ public class DataAdapterLauncher
     public static void Main(string[] args)
     {
         string host = "localhost";
-        int reqrepPort = 6661;
-        int notifPort = 6662;
+        int port = 6661;
 
         try
         {
             DataProviderServer server = new DataProviderServer();
             server.Adapter = new HelloWorldAdapter();
 
-            TcpClient reqrepSocket = new TcpClient(host, reqrepPort);
-            server.RequestStream = reqrepSocket.GetStream();
-            server.ReplyStream = reqrepSocket.GetStream();
-
-            TcpClient notifSocket = new TcpClient(host, notifPort);
-            server.NotifyStream = notifSocket.GetStream();
+            TcpClient socket = new TcpClient(host, port);
+            server.RequestStream = socket.GetStream();
+            server.ReplyStream = socket.GetStream();
 
             server.Start();
             System.Console.WriteLine("Remote Adapter connected to Lightstreamer Server.");

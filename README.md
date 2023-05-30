@@ -12,7 +12,7 @@ As an example of [Clients Using This Adapter](#clients-using-this-adapter), you 
 First, please take a look at the previous installment [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application.
 Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" Item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with C# and Visual Basic equivalents.
 On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling provided by Lightstreamer Server, we could even do something different.
-For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or, we could use the C# Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
+For example, we could keep the Java Adapter on the server side and use node.js, instead of HTML, on the client side. Or, we could use the C# Adapter on the server side and use Java, instead of HMTL or node.js, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
 
 Please refer to [General Concepts](https://lightstreamer.com/docs/ls-server/latest/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 
@@ -31,7 +31,7 @@ But, if your remote Data Adapter is based on certain languages/technologies (suc
 <br>
 In this specific example we will leverage the <b>Lightstreamer .NET Standard Adapter API</b> library. So, let's recap... the Proxy Data Adapter converts from a Java interface to TCP sockets, and the .NET Standard library converts from TCP sockets to a .NET interface.
 <br>
-The full API references for the languages covered in this tutorial are available from [.NET Standard API reference for Adapters](https://lightstreamer.com/api/ls-dotnetstandard-adapter/1.12.1-n/).
+The full API references for the languages covered in this tutorial are available from [.NET Standard API reference for Adapters](https://lightstreamer.com/api/ls-dotnetstandard-adapter/latest/index.html).
 
 ### Dig the Code
 
@@ -43,7 +43,10 @@ The C# Data Adapter consists of two classes: the `DataAdapterLauncher` contains 
 
 ##### DataAdapterLauncher
 
-The DataAdapterLauncher creates a DataProviderServer instance and assigns a HelloWorldAdapter instance to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, you start the DataProviderServer.
+The DataAdapterLauncher creates a DataProviderServer instance and assigns a HelloWorldAdapter instance to it. Then, it creates a TCP client socket on TCP port <b>6661</b>. Then it assigns the stream of the socket to both the RequestStream and ReplyStream properties of the DataProviderServer.
+As we said, after creating this socket, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer.
+
+Finally, the DataProviderServer is started.
 
 ##### HelloWorldAdapter
 
@@ -63,7 +66,10 @@ It consists of two modules: the `DataAdapterLauncher`, which contains the applic
 
 ##### DataAdapterLauncher
 
-The `DataAdapterLauncher.vb` creates a DataProviderServer instance and assigns a HelloWorldAdapter instance (which we will define below) to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, start the DataProviderServer.
+The `DataAdapterLauncher.vb` creates a DataProviderServer instance and assigns a HelloWorldAdapter instance to it. Then, it creates a TCP client socket on TCP port <b>6661</b>. Then it assigns the stream of the socket to both the RequestStream and ReplyStream properties of the DataProviderServer.
+As we said, after creating this socket, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer.
+
+Finally, the DataProviderServer is started.
 
 ##### HelloWorldAdapter
 
@@ -94,7 +100,6 @@ The `adapters.xml` file looks like:
     <adapter_class>PROXY_FOR_REMOTE_ADAPTER</adapter_class>
     <classloader>log-enabled</classloader>
     <param name="request_reply_port">6661</param>
-    <param name="notify_port">6662</param>
   </data_provider>
  
 </adapters_conf>
@@ -160,8 +165,10 @@ from the "New Project..." wizard, choose the "Visual Basic" language and the "Co
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer SDK for .NET Standard Adapters since version 1.15 or newer.
-* For instructions compatible with Lightstreamer SDK for .NET Adapters version 1.10, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/current_1.10).
+* Compatible with Lightstreamer SDK for .NET Standard Adapters version 1.15 or newer and Lightstreamer Server version 7.4 or newer.
+- For a version of this example compatible with Lightstreamer Server version since 7.0, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/for_Lightstreamer_7.3).
+- For instructions compatible with Lightstreamer SDK for .NET Adapters version 1.11 to 1.14, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/for_Lightstreamer_7.3).
+- For instructions compatible with Lightstreamer SDK for .NET Adapters version 1.10, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/current_1.10).
 
 ## Final Notes
 For more information, please [visit our website](http://www.lightstreamer.com/) and [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
