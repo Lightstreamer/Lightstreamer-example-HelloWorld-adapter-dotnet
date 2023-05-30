@@ -43,7 +43,7 @@ The C# Data Adapter consists of two classes: the `DataAdapterLauncher` contains 
 
 ##### DataAdapterLauncher
 
-The DataAdapterLauncher creates a DataProviderServer instance and assigns a HelloWorldAdapter instance to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (at least, this is mandatory for Servers earlier than 7.4, then it is supported for backward compatibility). However, as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer. Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, you start the DataProviderServer.
+The DataAdapterLauncher creates a DataProviderServer instance and assigns a HelloWorldAdapter instance to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, you start the DataProviderServer.
 
 ##### HelloWorldAdapter
 
@@ -63,7 +63,7 @@ It consists of two modules: the `DataAdapterLauncher`, which contains the applic
 
 ##### DataAdapterLauncher
 
-The `DataAdapterLauncher.vb` creates a DataProviderServer instance and assigns a HelloWorldAdapter instance (which we will define below) to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (at least, this is mandatory for Servers earlier than 7.4, then it is supported for backward compatibility). However, as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer. Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, start the DataProviderServer.
+The `DataAdapterLauncher.vb` creates a DataProviderServer instance and assigns a HelloWorldAdapter instance (which we will define below) to it. Then, it creates two TCP client sockets, because the Proxy Data Adapter, to which our remote .NET Adapter will connect, needs two connections (but as we said, after creating these sockets, you don't have to bother with reading and writing, as these operations are automatically handled by the DataProviderServer). Let's use TCP ports <b>6661</b> and <b>6662</b>. Assign the stream of the first socket to the RequestStream and ReplyStream properties of the DataProviderServer. Assign the stream of the second socket to the NotifyStream property of the DataProviderServer. Finally, start the DataProviderServer.
 
 ##### HelloWorldAdapter
 
@@ -102,12 +102,12 @@ The `adapters.xml` file looks like:
 
 <i>NOTE: not all configuration options of a Proxy Adapter are exposed by the file suggested above.<br>
 You can easily expand your configurations using the generic template
-for [basic](https://lightstreamer.com/docs/ls-server/latest_7_3/remote_adapter_conf_template/adapters.xml) and [robust](https://lightstreamer.com/docs/ls-server/latest_7_3/remote_adapter_robust_conf_template/adapters.xml) Proxy Adapters as a reference.</i>
+for [basic](https://lightstreamer.com/docs/ls-server/latest/remote_adapter_conf_template/adapters.xml) and [robust](https://lightstreamer.com/docs/ls-server/latest/remote_adapter_robust_conf_template/adapters.xml) Proxy Adapters as a reference.</i>
 
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps:
 * Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](https://lightstreamer.com/download/), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
-* Get the `deploy.zip` file of the ["Release for Lightstreamer 7.3" release](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/releases) and unzip it.
+* Get the `deploy.zip` file of the [latest release](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/releases) and unzip it
 * Plug the Proxy Data Adapter into the Server: go to the `Deployment_LS` folder and copy the `ProxyHelloWorld` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
 * Alternatively, you may plug the **robust** versions of the Proxy Data Adapter: go to the `Deployment_LS(robust)` folder and copy the `ProxyHelloWorld` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
 * Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Adapters and the Remote Adapters.
@@ -160,7 +160,7 @@ from the "New Project..." wizard, choose the "Visual Basic" language and the "Co
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer SDK for .NET Standard Adapters version 1.11 to 1.14.
+* Compatible with Lightstreamer SDK for .NET Standard Adapters since version 1.15 or newer.
 * For instructions compatible with Lightstreamer SDK for .NET Adapters version 1.10, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-dotnet/tree/current_1.10).
 
 ## Final Notes
